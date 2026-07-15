@@ -3,7 +3,7 @@ import json
 from urllib.error import URLError
 from urllib.request import urlopen
 
-from flask import Flask, render_template_string
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -33,18 +33,8 @@ def index():
     now = datetime.now()
     event = fetch_today_event(now)
 
-    return render_template_string(
-        """
-        <html>
-            <head><title>Today's Event</title></head>
-            <body>
-                <h1>Current Date and Time</h1>
-                <p>{{ current_datetime }}</p>
-                <h2>Event for Today</h2>
-                <p>{{ event }}</p>
-            </body>
-        </html>
-        """,
+    return render_template(
+        "index.html",
         current_datetime=now.strftime("%Y-%m-%d %H:%M:%S"),
         event=event,
     )

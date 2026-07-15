@@ -1,4 +1,4 @@
-# CalenderApp
+# CalendarApp
 
 A Flask app that fetches an event for the current date from the internet and displays it with the current date and time.
 
