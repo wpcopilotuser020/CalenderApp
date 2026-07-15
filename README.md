@@ -6,7 +6,7 @@ A Flask app that fetches an event for the current date from the internet and dis
 
 ```bash
 pip install flask
-python app.py
+flask --app app run
 ```
 
 Then open `http://127.0.0.1:5000/`.
