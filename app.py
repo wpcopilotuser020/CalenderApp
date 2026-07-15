@@ -1,5 +1,6 @@
 from datetime import datetime
 import json
+import socket
 from urllib.error import URLError
 from urllib.request import urlopen
 
@@ -15,7 +16,7 @@ def fetch_today_event(now: datetime) -> str:
     try:
         with urlopen(url, timeout=10) as response:
             payload = json.load(response)
-    except (URLError, TimeoutError, json.JSONDecodeError):
+    except (URLError, socket.timeout, json.JSONDecodeError):
         return "Unable to fetch today's event right now."
 
     events = payload.get("events", []) if isinstance(payload, dict) else []
