@@ -22,9 +22,12 @@ def fetch_today_event(now: datetime) -> str:
     if not events:
         return "No event found for today."
 
-    event = events[0]
-    year = event.get("year", "Unknown year")
-    description = event.get("description", "No description available.")
+    event = events[0] if isinstance(events[0], dict) else {}
+    year = event.get("year")
+    description = event.get("description")
+    if not year or not description:
+        return "No complete event details available for today."
+
     return f"{year}: {description}"
 
 
